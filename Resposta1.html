@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+</head>
+
+<body>
+  <header>
+    <h1>Bem-vindo ao Meu Site</h1>
+
+  </header>
+
+  <main>
+    <section id="home">
+      <h2>Questao 1</h2>
+      <p id="questão"> Observe o trecho de código:
+        int INDICE = 12, SOMA = 0, K = 1;
+        enquanto K < INDICE faça { K=K + 1; SOMA=SOMA + K;} imprimir(SOMA); </p>
+
+          <p id="mensagem">Resultado: </p>
+          <button id="botao">Clique-me!</button>
+    </section>
+  </main>
+
+
+  <script>
+
+document.getElementById('botao').addEventListener('click', function () {
+      var SOMA = 0;
+      for (var k = 1; k < 12; k++) {
+        SOMA += k;
+      }
+      const mensagem = document.getElementById('mensagem');
+      mensagem.textContent = "Resultado:" + SOMA;
+    });
+
+
+  </script>
+</body>
+
+</html>

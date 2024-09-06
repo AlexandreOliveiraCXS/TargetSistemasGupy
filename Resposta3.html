@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+</head>
+
+<body>
+    <header>
+        <h1>Bem-vindo ao Meu Site</h1>
+
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Questao 3</h2>
+            <p id="questão"> Observe o trecho de código:
+                3) Dado um vetor que guarda o valor de faturamento diário de uma distribuidora de todos os dias de um
+                ano, faça um programa, na linguagem que desejar, que calcule e retorne:
+
+                - O menor valor de faturamento ocorrido em um dia do ano;
+                - O maior valor de faturamento ocorrido em um dia do ano;
+                - Número de dias no ano em que o valor de faturamento diário foi superior à média anual.
+
+                a) Considerar o vetor já carregado com as informações de valor de faturamento.
+
+                b) Podem existir dias sem faturamento, como nos finais de semana e feriados. Estes dias devem ser
+                ignorados no cálculo da média.
+
+                c) Utilize o algoritmo mais veloz que puder definir. </p>
+
+            <p id="menor"> O menor valor de faturamento ocorrido em um dia do ano: </p>
+            <p id="maior"> O maior valor de faturamento ocorrido em um dia do ano: </p>
+            <p id="media"> Media de Faturamento: </p>
+            <p id="quantidade"> Número de dias no ano em que o valor de faturamento diário foi superior à média anual:
+            </p>
+            <button id="botao">Clique-me!</button>
+        </section>
+    </main>
+
+
+    <script>
+        const faturamento = [
+            { valor: 0, DiaSemana: 0, feriado: false },
+            { valor: 100, DiaSemana: 1, feriado: false },
+            { valor: 200, DiaSemana: 2, feriado: false },
+            { valor: 150, DiaSemana: 3, feriado: false },
+            { valor: 180, DiaSemana: 4, feriado: false },
+            { valor: 50, DiaSemana: 5, feriado: false },
+            { valor: 0, DiaSemana: 6, feriado: false },
+            { valor: 0, DiaSemana: 0, feriado: false },
+            { valor: 101, DiaSemana: 1, feriado: false },
+            { valor: 202, DiaSemana: 2, feriado: false },
+            { valor: 153, DiaSemana: 3, feriado: true },
+            { valor: 184, DiaSemana: 4, feriado: false },
+            { valor: 55, DiaSemana: 5, feriado: false },
+            { valor: 0, DiaSemana: 6, feriado: false },
+            { valor: 0, DiaSemana: 0, feriado: false },
+            { valor: 105, DiaSemana: 1, feriado: false },
+            { valor: 206, DiaSemana: 2, feriado: false },
+            { valor: 157, DiaSemana: 3, feriado: false },
+            { valor: 188, DiaSemana: 4, feriado: true },
+            { valor: 59, DiaSemana: 5, feriado: false },
+            { valor: 0, DiaSemana: 6, feriado: false },
+            { valor: 0, DiaSemana: 0, feriado: false },
+            { valor: 103, DiaSemana: 1, feriado: false },
+            { valor: 203, DiaSemana: 2, feriado: false },
+            { valor: 153, DiaSemana: 3, feriado: false },
+            { valor: 183, DiaSemana: 4, feriado: false },
+            { valor: 53, DiaSemana: 5, feriado: false },
+            { valor: 0, DiaSemana: 6, feriado: false }
+        ];
+
+        document.getElementById('botao').addEventListener('click', function () {
+            var menorResult = Number.MAX_VALUE;
+            var maiorResult = 0;
+            var somaResult = 0;
+            var somaDay = 0;
+            var quantidadeResult = 0;
+
+
+            faturamento.forEach(fat => {
+                if ((fat.DiaSemana != 6 && fat.DiaSemana != 0) && fat.feriado === false) {
+
+                    if (menorResult > fat.valor)
+                        menorResult = fat.valor;
+
+                    if (maiorResult < fat.valor)
+                        maiorResult = fat.valor;
+
+                    somaResult += fat.valor;
+                    somaDay++;
+                }
+            });
+
+            const media = somaResult / somaDay;
+
+            faturamento.forEach(fat => {
+                if (media < fat.valor)
+                    quantidadeResult++;
+            });
+
+
+            const menor = document.getElementById('menor');
+            menor.textContent = menor.textContent + " " + menorResult;
+
+            const maior = document.getElementById('maior');
+            maior.textContent = maior.textContent + " " + maiorResult;
+
+            const mediaElement = document.getElementById('media');
+            mediaElement.textContent = mediaElement.textContent + " " + media;
+
+            const quantidade = document.getElementById('quantidade');
+            quantidade.textContent = quantidade.textContent + " " + quantidadeResult;
+        });
+
+
+    </script>
+</body>
+
+</html>
